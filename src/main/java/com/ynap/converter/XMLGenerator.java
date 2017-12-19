@@ -37,9 +37,6 @@ public class XMLGenerator {
 	public void generateXML() throws IOException {
 		Reader in = new FileReader(FULL_CSV);
     	Iterable<CSVRecord> records = CSVFormat.DEFAULT.withDelimiter(';').withQuote('\"').withFirstRecordAsHeader().parse(in);
-//    	CSVFormat.DEFAULT
-//    	withDelimiter
-//    	withQuote
     	
     	Users<FullUser> users = new Users<>();
     	List<FullUser> fullUserList = new ArrayList<>();
@@ -58,6 +55,11 @@ public class XMLGenerator {
         xmlMapper.writeValue(new File(PATH + "output.xml"), users);
 	}
 	
+	/**
+	 * Builds full user XML model object from the input CSV
+	 * @param record
+	 * @return
+	 */
 	private FullUser buildFullUser(CSVRecord record) {
 		
 		String userRegType = record.get(FullUserCSVFields.USER_REG_TYPE);
@@ -94,12 +96,18 @@ public class XMLGenerator {
 		fullUser.setLastUpdate(lastUpdate);
 		fullUser.setAccountStatus(accountStatus);
 		fullUser.setRegistrationSource(registrationSource);
+		
 		Roles roles = getRoles(roleName);
 		fullUser.setRoles(roles);
+		
 		Pronunciation pronunciation = getPronunciation(pronunciationFirstName, pronunciationLastName, pronunciationLocale);
 		fullUser.setPronunciation(pronunciation);
+		
 		List<ContextAttribute> contextAttributes = getContextAttributes(record);
 		fullUser.setContextAttribute(contextAttributes);
+		
+		UserPreference userPreference = getUserPreferences(record);
+		fullUser.setUserPreference(userPreference);
 		
 		return fullUser;
 	}
@@ -175,12 +183,4 @@ public class XMLGenerator {
 		return userPreference;
 	}
 	
-	/*
-	private static Consumer<CSVRecord> getFullUserCSVConsumer() {
-		Consumer<CSVRecord> consumer = (row) -> {
-		};
-		return consumer;
-	}
-	*/
-
 }
