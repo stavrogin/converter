@@ -1,10 +1,8 @@
 package com.ynap.converter.model;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonInclude;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @JsonInclude(Include.NON_NULL)
 public class UserPreference {
@@ -13,7 +11,7 @@ public class UserPreference {
 	private String name;
 	
 	@JsonProperty("UserPreferenceValue")
-	private List<UserPreferenceValue> userPreferenceValue;
+	private UserPreferenceValue userPreferenceValue;
 
 	public String getName() {
 		return name;
@@ -23,11 +21,11 @@ public class UserPreference {
 		this.name = name;
 	}
 
-	public List<UserPreferenceValue> getUserPreferenceValue() {
+	public UserPreferenceValue getUserPreferenceValue() {
 		return userPreferenceValue;
 	}
 
-	public void setUserPreferenceValue(List<UserPreferenceValue> userPreferenceValue) {
+	public void setUserPreferenceValue(UserPreferenceValue userPreferenceValue) {
 		this.userPreferenceValue = userPreferenceValue;
 	}
 

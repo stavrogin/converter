@@ -12,4 +12,12 @@ public class Roles {
 	@JsonProperty("RoleName")
 	private List<String> roleName;
 
+	public List<String> getRoleName() {
+		return roleName;
+	}
+
+	public void setRoleName(List<String> roleName) {
+		this.roleName = roleName;
+	}
+	
 }
