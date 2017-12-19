@@ -61,30 +61,4 @@ public class App
         }           
     }   
 
-    public static void main(String[] args) throws IOException {        
-//        String lineinput = "the quick,\"brown, fox jumps\",over,\"the\",,\"lazy dog\",";
-    	/*
-    	String lineinput = "the quick,brown,\"fox \"\" aa\",ciao";
-
-        App myCSV = new App();
-        System.out.println("Testing CSVParser with: \n " + lineinput);
-        for (String s : myCSV.parse(lineinput)) {
-            System.out.println(s);
-        }
-        */
-    	
-//    	https://commons.apache.org/proper/commons-csv/user-guide.html
-    	
-    	Reader in = new FileReader("C:\\Users\\riccif\\Desktop\\shared\\full_ferrari_csv.csv");
-    	Iterable<CSVRecord> records = CSVFormat.EXCEL.withFirstRecordAsHeader().parse(in);
-//    	CSVFormat.DEFAULT
-//    	withDelimiter
-//    	withQuote
-    	for (CSVRecord record : records) {
-    	    String lastName = record.get("RegisteredCountry");
-    	    System.out.println(lastName);
-    	}
-        
-    }
-    
 }

@@ -5,12 +5,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
 @JsonInclude(Include.NON_NULL)
-public class ContextAttribute {
+public class AttributeValue {
 
-	@JsonProperty("AttributeName")
-	private String attributeName;
-	
-	@JsonProperty("AttributeValue")
-	private AttributeValue attributeValue;
+	@JsonProperty("Value")
+	private String value;
 	
 }
