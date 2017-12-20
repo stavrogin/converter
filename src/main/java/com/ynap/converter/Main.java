@@ -2,24 +2,20 @@ package com.ynap.converter;
 
 import java.io.IOException;
 
+import com.ynap.converter.constants.Constants;
+
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-		// read file into stream, try-with-resources
-//		try (Stream<String> stream = Files.lines(Paths.get(FULL_CSV))) {
-//			stream.forEach(System.out::println);
-//		} catch (IOException e) {
-//			logger.error(e);
-//		}
+
+		XMLGeneratorFactory xmlGeneratorFactory = new XMLGeneratorFactory();
 		
+		XMLGenerator fullUsersXMLGenerator = xmlGeneratorFactory.getXMLGenerator(Constants.UserType.FULL);
+		//XMLGenerator fastUsersXMLGenerator = xmlGeneratorFactory.getXMLGenerator(Constants.UserType.FAST);
 		
-		XMLGenerator g = new XMLGenerator();
-		g.generateXML();
-		
+		fullUsersXMLGenerator.generateXML();
+		//fastUsersXMLGenerator.generateXML();
+
 	}
-
-	
-
-	
 	
 }
